@@ -4,6 +4,7 @@ const gulp = require('gulp');
 const minifyCss = require('gulp-csso');
 const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
+const svgmin = require('gulp-svgmin');
 
 gulp.task('css', _ => {
 	return gulp.src('src/**/*.css')
@@ -19,4 +20,10 @@ gulp.task('js', _ => {
 		.pipe(gulp.dest('build/js'));
 });
 
-gulp.task('default', ['css', 'js']);
+gulp.task('svg', _ => {
+	return gulp.src('src/**/*.svg')
+		.pipe(svgmin)
+		.pipe(gulp.dest('build/svg'));
+});
+
+gulp.task('default', ['css', 'js', 'svg']);
