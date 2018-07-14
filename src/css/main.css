@@ -13,11 +13,21 @@
 
 .carousel__item {}
 
-.carousel__next, .carousel__prev {
+.carousel__next {
+	background: #FFF url(../svg/right.svg) center center no-repeat;
+	right: 0px;
+}
+
+.carousel__prev {
+	background: #FFF url(../svg/left.svg) center center no-repeat;
+	right: auto;
+	left: -20px;
+}
+
+.carousel__button {
 	position: absolute;
 	width: 40px;
 	height: 40px;
-	background: #FFF url(../svg/right.svg) center center no-repeat;
 	background-size: 20px 20px;
 	border-radius: 50%;
 	top: 50%;
@@ -31,14 +41,6 @@
 .carousel__next:hover, .carousel__prev:hover {
 	transform: scale(1.2);
 }
-
-.carousel__prev {
-	background: #FFF url(../svg/left.svg) center center no-repeat;
-	background-size: 20px 20px;
-	right: auto;
-	left: -20px;
-}
-
 .carousel__next--hidden, .carousel__prev--hidden {
 	opacity: 0
 }

@@ -1,0 +1,32 @@
+[
+	{
+		"image": "./images/1.jpg",
+		"title": "First item's title",
+		"description": "Here write a small description for the item."
+	},
+	{
+		"image": "./images/2.jpg",
+		"title": "Second item's title",
+		"description": "Here write a small description for the item."
+	},
+	{
+		"image": "./images/3.jpg",
+		"title": "Third item's title",
+		"description": "Here write a small description for the item."
+	},
+	{
+		"image": "./images/4.jpg",
+		"title": "Fourth item's title",
+		"description": "Here write a small description for the item."
+	},
+	{
+		"image": "./images/5.jpg",
+		"title": "fifth item's title",
+		"description": "Here write a small description for the item."
+	},
+	{
+		"image": "./images/6.jpg",
+		"title": "sixth item's title",
+		"description": "Here write a small description for the item."
+	}
+]

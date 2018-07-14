@@ -1,0 +1,39 @@
+.Item{
+	margin: 40px 10px;
+	background: #FFF;
+	box-shadow: 0 15px 35px #3232321A, 0 5px 15px #0000001A;
+}
+
+.Item:hover {
+	transition: transform .3s;
+	transform: translate3d(0, -2px, 0);
+}
+
+img {
+	width: 100%;
+}
+
+.Item__image {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.Item__body {
+	padding: 25px;
+}
+
+.Item__title {
+	font-size: 24px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: #232323;
+}
+
+.Item__description {
+	color: #585858;
+}
+
+.Item {
+	position: relative;
+}

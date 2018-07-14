@@ -1,0 +1,21 @@
+* {
+	box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	overflow-x: hidden;
+}
+
+body  {
+	font-family: sans-serif;
+	padding: 50px;
+	background: linear-gradient(45deg, #409dca, #081245) center center no-repeat;
+	line-height: 1.4;
+}

@@ -1,5 +1,3 @@
-'use strict';
-
 class Carousel {
 	/**
 	 * @param {HTMLElement} element, the element that contains the items
@@ -65,6 +63,9 @@ class Carousel {
 	_createNavigation() {
 		const next_button = this._createDivWithClass('carousel__next');
 		const prev_button = this._createDivWithClass('carousel__prev');
+
+		next_button.classList.add('carousel__button');
+		prev_button.classList.add('carousel__button');
 
 		this._root.appendChild(next_button);
 		this._root.appendChild(prev_button);
@@ -162,11 +163,4 @@ class Carousel {
 	}
 }
 
-const container = document.querySelector('.slider');
-const options = {
-	slidesToScroll: 1,
-	slidesVisible: 3,
-	loop: false
-};
-
-new Carousel(container, options);
+export default Carousel;
