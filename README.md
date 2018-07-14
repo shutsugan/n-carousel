@@ -67,10 +67,6 @@ loop | boolean | false | Enables the ability to start over the carousel from eit
 
 ![n-carousel screenshot](https://github.com/shutsugan/n-carousel/blob/master/example.png)
 
-### Front-end
-
-created using reactjs and ES6
-
 ## License
 
 MIT
