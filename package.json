@@ -4,7 +4,7 @@
   "description": "A flexible lightweight carousel.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,14 @@
   },
   "homepage": "https://github.com/shutsugan/n-carousel#readme",
   "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
     "gulp": "3.9.1",
+    "gulp-babel": "7.0.1",
     "gulp-concat": "2.6.1",
     "gulp-csso": "3.0.1",
     "gulp-sourcemaps": "2.6.4",
-    "gulp-svgmin": "1.2.4"
+    "gulp-svgmin": "1.2.4",
+    "gulp-uglify": "3.0.0"
   }
 }
