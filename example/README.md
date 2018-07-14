@@ -20,7 +20,7 @@ to build the app for production run:
 
 ### App screenshot
 
-![n-carousel screenshot](https://github.com/shutsugan/n-carousel/tree/master/example/blob/master/example.png)
+![n-carousel screenshot](https://github.com/shutsugan/n-carousel/blob/master/example.png)
 
 ### Front-end
 
