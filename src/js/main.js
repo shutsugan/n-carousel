@@ -10,13 +10,15 @@ class Carousel {
 		this._element = element;
 		this._options = Object.assign({}, {
 			slidesToScroll: 1,
-			slidesVisible: 1
+			slidesVisible: 1,
+			loop: false
 		}, options);
 
 		this._container = this._createDivWithClass('carousel__container');
 		
 		const children = Array.from(this._element.children);
 
+		this._current_item = 0;
 		this._is_mobile = false;
 
 		this._root = this._createDivWithClass('carousel');
@@ -32,6 +34,74 @@ class Carousel {
 
 			return item;
 		});
+
+		this._setStyle();
+		this._createNavigation();
+	}
+
+	/**
+     * Apply the right dimentions 
+     * to the items of the carousel.
+	 */
+	_setStyle() {
+		const ratio = this._items.length / this.slidesVisible;
+		this._container.style.width = (ratio * 100) + '%';
+
+		this._items.forEach(item => item.style.width = ((100 / this.slidesVisible) / ratio) + "%");
+	}
+
+
+	_createNavigation() {
+		const next_button = this._createDivWithClass('carousel__next');
+		const prev_button = this._createDivWithClass('carousel__prev');
+
+		this._root.appendChild(next_button);
+		this._root.appendChild(prev_button);
+
+		next_button.addEventListener('click', event => this._next());
+		prev_button.addEventListener('click', event => this._prev());
+
+		if (this._options.loop === true) return;
+
+		this._onMove(index => {
+			if (index === 0) prev_button.classList.add('carousel__prev--hidden');
+			else prev_button.classList.remove('carousel__prev--hidden');
+
+			if (this._items[this._current_item + this.slidesVisible] === undefined) {
+				next_button.classList.add('carousel__next--hidden');
+			} else {
+				next_button.classList.remove('carousel__next--hidden');
+			}
+		});
+	}
+
+	_next() {
+		this._gotoItem(this._current_item + this.slidesToScroll);
+	}
+
+	_prev() {
+		this._gotoItem(this._current_item - this.slidesToScroll);
+	}
+
+	/**
+     * slide the carousel to the targeted item.
+     * @param {number} index
+	 */
+	_gotoItem(index) {
+		if (index < 0) {
+			if (!this._options.loop) return;
+			index = this._items.length - this.slidesVisible;
+		} else if (index >= this._items.length || this._items[this._current_item + this.slidesVisible] === undefined && index > this._current_item)  {
+			if (!this._options.loop) return;
+
+			index = 0;
+		}
+
+		const translateX = index * -100 / this._items.length;
+		this._container.style.transform = `translate3d(${translateX}%, 0, 0)`;
+		this._current_item = index;
+
+		this._move_callbacks.forEach(callback => callback(index));
 	}
 
 	/**
