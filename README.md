@@ -63,7 +63,7 @@ slidesToScroll | number | 1 | Number of items to slide when clicking the next or
 slidesVisible | number | 3 | Number of items to show at a time.
 loop | boolean | false | Enables the ability to start over the carousel from either sides.
 
-### App screenshot
+### Carousel screenshot
 
 ![n-carousel screenshot](https://github.com/shutsugan/n-carousel/blob/master/example.png)
 
