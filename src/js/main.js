@@ -4,7 +4,8 @@ class Carousel {
 	/**
 	 * @param {HTMLElement} element, the element that contains the items
 	 * @param {Object} [options.slidesToScroll=1] Number of items to be slided
-	 * @param {Object} [options.slidesVisible=1] Number of visible items	 
+	 * @param {Object} [options.slidesVisible=1] Number of visible items
+	 * @param {boolean} [options.loop=false] should loop in the end of the carousel.
 	 */
 	constructor(element, options = {}) {
 		this._element = element;
@@ -19,6 +20,7 @@ class Carousel {
 		const children = Array.from(this._element.children);
 
 		this._current_item = 0;
+		this._move_callbacks = [];
 		this._is_mobile = false;
 
 		this._root = this._createDivWithClass('carousel');
@@ -37,6 +39,15 @@ class Carousel {
 
 		this._setStyle();
 		this._createNavigation();
+
+		this._move_callbacks.forEach(callback => callback(0));
+		this._onRisize();
+
+		window.addEventListener('resize', event => this._onRisize());
+		this._root.addEventListener('keyup', event => {
+			if (event.key === 'ArrowRight' || event.key === 'Right') this._next();
+			else if (event.key === 'ArrowLeft' || event.key === 'Left') this._prev();
+		});
 	}
 
 	/**
@@ -105,6 +116,26 @@ class Carousel {
 	}
 
 	/**
+     * store callbacks to use later.
+     * @param {callback} callbck
+	 */
+	_onMove(callback)  {
+		this._move_callbacks.push(callback);
+	}
+
+	/**
+     * called when risize the window.
+	 */
+	_onRisize() {
+		const mobile = window.innerWidth < 800;
+		if (mobile !== this._is_mobile) {
+			this._is_mobile = mobile;
+			this._setStyle();
+			this._move_callbacks.forEach(callback => callback(this._current_item));
+		}
+	}
+
+	/**
      * Create an element with a className.
 	 * @param {string} className
 	 * @returns {HTMLElement}
@@ -130,3 +161,12 @@ class Carousel {
 		return this._is_mobile ? 1 : this._options.slidesVisible;
 	}
 }
+
+const container = document.querySelector('.slider');
+const options = {
+	slidesToScroll: 1,
+	slidesVisible: 3,
+	loop: false
+};
+
+new Carousel(container, options);
