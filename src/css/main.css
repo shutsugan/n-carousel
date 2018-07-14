@@ -1,0 +1,14 @@
+.carousel {
+	position: relative;
+	/*overflow: hidden;*/
+}
+
+.carousel__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform .3s;
+	transform: translate3d(0, 0, 0);
+}
+
+.carousel__item {}
