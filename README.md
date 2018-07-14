@@ -37,9 +37,14 @@ Create a simple HTML layouts inside ```<body>``` tag, Example:
 ```
 
 After copying The build foulder to your project,
-In a new js file add ```import Carousel from ./build/js/min.js``` to import the class then:
+
+
+In a new js file add ```import Carousel from './build/js/min.js'``` to import the class 
+
+then add these lines to initialize the carousel:
 
 ```js
+//get the container element, this is based on the class of the example above.
 const container = document.querySelector('.slider');
 const options = {
 	slidesToScroll: 1,
